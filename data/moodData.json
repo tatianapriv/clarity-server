@@ -1,0 +1,20 @@
+[
+  {
+    "userId": "asdasdasdas",
+    "values": [
+      {
+        "value": 1
+        "date": "123123"
+      },
+      {
+        "value": 90
+        "date": "123123"
+      }
+    ]
+  },
+  {
+    "userId": "asdasdasdas",
+    "values": [],
+    "date": "asdsad"
+  }
+]
