@@ -1,1 +1,11 @@
-[{"userId":"1234","values":[{"value":80,"date":"Jan"},{"value":50,"date":"Feb"},{"value":90,"date":"Mar"},{"value":60,"date":"Apr"},{"value":80,"date":"May"},{"value":76,"date":1680633770987},{"value":32,"date":1680634085080}]}]
+[
+  {
+    "userId": "1234",
+    "values": [
+      { "value": 24, "date": "2023-04-04T21:27:28.526Z" },
+      { "value": 81, "date": "2023-04-04T21:47:50.824Z" },
+      { "value": 92, "date": "2023-04-04T22:02:17.377Z" },
+      { "value": 23, "date": "2023-04-04T22:15:42.764Z" }
+    ]
+  }
+]
