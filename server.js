@@ -5,13 +5,12 @@ const moodData = require("./routes/moodData");
 
 require("dotenv").config();
 
-const PORT = process.env.PORT || 1234;
-const CORS_ORIGIN = process.env.CORS_ORIGIN;
+const PORT = process.env.PORT || 1111;
 
-app.use(cors({ origin: CORS_ORIGIN }));
+app.use(cors());
 app.use(express.json());
 
-app.use("/", moodData);
+app.use("/mood", moodData);
 
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`);

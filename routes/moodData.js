@@ -1,10 +1,11 @@
+const express = require("express");
 const router = express.Router();
 const fs = require("fs");
-const moodData = require("../data/moodData.json");
+const { stringify } = require("querystring");
 
 //look at prev projects for guideline on fs
 router.get("/", (req, res) => {
-  fs.readFile(moodData, (err, data) => {
+  fs.readFile("./data/moodData.json", "utf8", (err, data) => {
     const moodData = JSON.parse(data);
     if (moodData) {
       res.status(200).json(moodData);
@@ -15,16 +16,20 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  fs.readFile(moodData, (err, data) => {
+  fs.readFile("./data/moodData.json", (err, data) => {
     if (data) {
       const moodData = JSON.parse(data);
-      const incomingData = req.body;
 
       const foundUserId = moodData.findIndex((user) => {
-        return user.userId === incomingData.id;
+        return user.userId === req.body.userId;
       });
-
-      moodData[foundUserId].values.push(incomingData.value);
+      const newEntry = { value: req.body.value, date: req.body.date };
+      moodData[foundUserId].values.push(newEntry);
+      const newMoodData = JSON.stringify(moodData);
+      fs.writeFile("./data/moodData.json", newMoodData, (err) => {
+        if (err) console.log(err);
+      });
+      res.status(200).send("Your request was completed!");
     } else {
       res.status(500).send("Failed to retrieve data");
     }
