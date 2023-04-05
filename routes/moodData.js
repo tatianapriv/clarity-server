@@ -16,6 +16,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+   
   fs.readFile("./data/moodData.json", (err, data) => {
     if (data) {
       const moodData = JSON.parse(data);
@@ -23,7 +24,13 @@ router.post("/", (req, res) => {
       const foundUserId = moodData.findIndex((user) => {
         return user.userId === req.body.userId;
       });
-      const newEntry = { value: req.body.value, date: req.body.date };
+      const newEntry = {
+        value: req.body.value,
+        date: req.body.date,
+        comment: req.body.comment,
+        
+      };
+     
       moodData[foundUserId].values.push(newEntry);
       const newMoodData = JSON.stringify(moodData);
       fs.writeFile("./data/moodData.json", newMoodData, (err) => {
